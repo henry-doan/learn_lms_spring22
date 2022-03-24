@@ -50,9 +50,9 @@ const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider value={{
       users, 
-      addUser: addUser, 
-      updateUser: updateUser,
-      deleteUser: deleteUser,
+      addUser, 
+      updateUser,
+      deleteUser,
     }}>
       { children }
     </UserContext.Provider>

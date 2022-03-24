@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { MyFormContainer } from '../styles/sharedStyles';
+import { CourseConsumer } from '../../providers/CourseProvider';
 
 const CourseForm = ({ addCourse, setAdd }) => {
   const [course, setCourse] = useState({ title: '', desc: '', subject: '' })
@@ -60,4 +61,10 @@ const CourseForm = ({ addCourse, setAdd }) => {
   )
 }
 
-export default CourseForm;
+const ConnectedCourseForm = (props) => (
+  <CourseConsumer>
+    { value => <CourseForm {...props} {...value} /> }
+  </CourseConsumer>
+)
+
+export default ConnectedCourseForm;

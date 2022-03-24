@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { EnrollmentConsumer } from '../../providers/EnrollmentProvider';
 
 const EnrollmentForm = ({ addEnrollment, setAdd, courseId }) => {
   const [enrollment, setEnroll] = useState({ role: '', user_id: 0 })
@@ -16,7 +17,7 @@ const EnrollmentForm = ({ addEnrollment, setAdd, courseId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addEnrollment(enrollment)
+    addEnrollment(courseId, enrollment)
     setAdd(false)
     setEnroll({ role: '', user_id: 0 })
   }
@@ -59,4 +60,10 @@ const EnrollmentForm = ({ addEnrollment, setAdd, courseId }) => {
   )
 }
 
-export default EnrollmentForm;
+const ConnectedEnrollmentForm = (props) => (
+  <EnrollmentConsumer>
+    { value => <EnrollmentForm {...props} {...value} />}
+  </EnrollmentConsumer>
+)
+
+export default ConnectedEnrollmentForm;
