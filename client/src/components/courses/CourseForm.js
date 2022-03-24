@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { MyFormContainer } from '../styles/sharedStyles';
 
 const CourseForm = ({ addCourse, setAdd }) => {
   const [course, setCourse] = useState({ title: '', desc: '', subject: '' })
@@ -12,7 +13,7 @@ const CourseForm = ({ addCourse, setAdd }) => {
   }
 
   return (
-    <>
+    <MyFormContainer>
       <h1>Create Course</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
@@ -55,7 +56,7 @@ const CourseForm = ({ addCourse, setAdd }) => {
           Submit
         </Button>
       </Form>
-    </>
+    </MyFormContainer>
   )
 }
 

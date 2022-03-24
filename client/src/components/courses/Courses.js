@@ -20,6 +20,12 @@ const Courses = () => {
       .catch( err => console.log(err))
   }
 
+  const deleteCourse = (id) => {
+    axios.delete(`/api/courses/${id}`)
+      .then( res => setCourses( courses.filter( c => c.id !== id )))
+      .catch( err => console.log(err))
+  }
+
   return (
     <>
       {
@@ -37,6 +43,7 @@ const Courses = () => {
       <h1>Courses</h1>
       <CourseList
         courses={courses}
+        deleteCourse={deleteCourse}
       />
     </>
   )
